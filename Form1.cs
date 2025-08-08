@@ -6,5 +6,10 @@ namespace PRODUCTOS
         {
             InitializeComponent();
         }
+
+        private void Crear_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
