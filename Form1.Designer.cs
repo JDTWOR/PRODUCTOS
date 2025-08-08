@@ -41,28 +41,35 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(67, 35);
+            txtNombre.Location = new Point(59, 35);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(125, 27);
+            txtNombre.PlaceholderText = "Nombre del Producto";
+            txtNombre.Size = new Size(110, 23);
             txtNombre.TabIndex = 0;
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(67, 89);
+            txtDescripcion.Location = new Point(59, 100);
+            txtDescripcion.Margin = new Padding(3, 2, 3, 2);
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(125, 27);
+            txtDescripcion.PlaceholderText = "Descripción";
+            txtDescripcion.Size = new Size(110, 23);
             txtDescripcion.TabIndex = 1;
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(67, 151);
+            txtPrecio.Location = new Point(59, 165);
+            txtPrecio.Margin = new Padding(3, 2, 3, 2);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(125, 27);
+            txtPrecio.PlaceholderText = "Precio";
+            txtPrecio.Size = new Size(110, 23);
             txtPrecio.TabIndex = 2;
             // 
             // Crear
             // 
-            Crear.Location = new Point(59, 228);
+            Crear.Location = new Point(45, 218);
+            Crear.Margin = new Padding(3, 2, 3, 2);
             Crear.Name = "Crear";
             Crear.Size = new Size(142, 43);
             Crear.TabIndex = 3;
@@ -93,6 +100,7 @@
             // 
             // Editar
             // 
+
             Editar.Location = new Point(496, 291);
             Editar.Name = "Editar";
             Editar.Size = new Size(142, 43);
@@ -115,7 +123,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 451);
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(700, 338);
             Controls.Add(button1);
             Controls.Add(Editar);
             Controls.Add(Eliminar);
@@ -125,7 +134,7 @@
             Controls.Add(txtDescripcion);
             Controls.Add(txtNombre);
             Name = "Form1";
-            Text = "Form";
+            Text = "Configuración de Productos";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
