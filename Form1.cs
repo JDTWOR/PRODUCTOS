@@ -9,7 +9,7 @@ namespace PRODUCTOS
 
 
     {
-        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=1234;";
+        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=;";
         private MySqlConnection conexion;
         public Form1()
         {
