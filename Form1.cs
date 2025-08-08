@@ -33,7 +33,7 @@ namespace PRODUCTOS
                 return;
             }
 
-            if (!double.TryParse(pre, out double precio))
+            if (!double.TryParse(pre, out double precio) || precio <= 0)
             {
                 MessageBox.Show("El precio debe ser un número válido");
                 return;
