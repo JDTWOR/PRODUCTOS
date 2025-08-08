@@ -39,6 +39,7 @@ namespace PRODUCTOS
 
             try
             {
+<<<<<<< HEAD
                 using (var conexion = new MySqlConnection(rutaDB))
                 {
                     conexion.Open();
@@ -52,6 +53,25 @@ namespace PRODUCTOS
                     }
                 }
                 MessageBox.Show("Producto Creado exitosamente");
+=======
+                string nombre = txtNombre.Text;
+                string descripcion = txtDescripcion.Text;
+                string pre = txtPrecio.Text;
+                double precio = Convert.ToDouble(pre);
+
+                conexion = new MySqlConnection(rutaDB);
+                conexion.Open();
+                string query = "INSERT INTO producto (nombre, descripcion, precio) VALUES (@nombre, @descripcion, @precio)";
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@nombre", nombre);
+                comando.Parameters.AddWithValue("@descripcion", descripcion);
+                comando.Parameters.AddWithValue("@precio", precio);
+                comando.ExecuteNonQuery();
+                conexion.Close();
+                MessageBox.Show("Producto creado exitosamente");
+                MostrarProductos();
+
+>>>>>>> 7d387e8616b57e92163d4d5427805d282cb78f14
             }
             catch
             {
@@ -99,7 +119,41 @@ namespace PRODUCTOS
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                txtNombre.Text = row.Cells["nombre"].Value.ToString();
+                txtDescripcion.Text = row.Cells["descripcion"].Value.ToString();
+                txtPrecio.Text = row.Cells["precio"].Value.ToString();
+            }
+        }
 
+        private void Eliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
+                try
+                {
+                    conexion = new MySqlConnection(rutaDB);
+                    conexion.Open();
+                    string query = "DELETE FROM producto WHERE id = @id";
+                    MySqlCommand comando = new MySqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@id", id);
+                    comando.ExecuteNonQuery();
+                    conexion.Close();
+                    MessageBox.Show("Producto eliminado exitosamente");
+                    MostrarProductos();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar el producto: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto para eliminar.");
+            }
         }
     }
-}
+
