@@ -34,7 +34,7 @@
             Crear = new Button();
             dataGridView1 = new DataGridView();
             Eliminar = new Button();
-            button2 = new Button();
+            Editar = new Button();
             button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -78,6 +78,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(299, 188);
             dataGridView1.TabIndex = 4;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Eliminar
@@ -88,16 +89,16 @@
             Eliminar.TabIndex = 5;
             Eliminar.Text = "Eliminar producto";
             Eliminar.UseVisualStyleBackColor = true;
+            Eliminar.Click += Eliminar_Click;
             // 
-            // button2
+            // Editar
             // 
-            button2.Location = new Point(496, 291);
-            button2.Name = "button2";
-            button2.Size = new Size(142, 43);
-            button2.TabIndex = 6;
-            button2.Text = "Editar producto";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            Editar.Location = new Point(496, 291);
+            Editar.Name = "Editar";
+            Editar.Size = new Size(142, 43);
+            Editar.TabIndex = 6;
+            Editar.Text = "Editar producto";
+            Editar.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -116,7 +117,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 451);
             Controls.Add(button1);
-            Controls.Add(button2);
+            Controls.Add(Editar);
             Controls.Add(Eliminar);
             Controls.Add(dataGridView1);
             Controls.Add(Crear);
@@ -138,7 +139,7 @@
         private Button Crear;
         private DataGridView dataGridView1;
         private Button Eliminar;
-        private Button button2;
+        private Button Editar;
         private Button button1;
     }
 }

@@ -1,5 +1,6 @@
 using MySql.Data.MySqlClient;
 using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PRODUCTOS
 
@@ -11,6 +12,7 @@ namespace PRODUCTOS
     {
         string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=1234;";
         private MySqlConnection conexion;
+        string txtId;
         public Form1()
         {
             InitializeComponent();
@@ -101,30 +103,26 @@ namespace PRODUCTOS
 
         private void Eliminar_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
-                try
-                {
-                    conexion = new MySqlConnection(rutaDB);
-                    conexion.Open();
-                    string query = "DELETE FROM producto WHERE id = @id";
-                    MySqlCommand comando = new MySqlCommand(query, conexion);
-                    comando.Parameters.AddWithValue("@id", id);
-                    comando.ExecuteNonQuery();
-                    conexion.Close();
-                    MessageBox.Show("Producto eliminado exitosamente");
-                    MostrarProductos();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al eliminar el producto: " + ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un producto para eliminar.");
-            }
+            conexion = new MySqlConnection(rutaDB);
+            conexion.Open();
+            string query = "DELETE FROM producto WHERE id=@id";
+            MySqlCommand comando = new MySqlCommand(query, conexion);
+            comando.Parameters.AddWithValue("@id", txtId);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+            MessageBox.Show("Este es el id de la fila seleccionado: " + txtId);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            var idCell = dataGridView1.SelectedRows[0].Cells["id"].Value;
+            txtId = idCell.ToString();
+            txtNombre.Text = row.Cells["nombre"].Value?.ToString();
+            txtDescripcion.Text = row.Cells["descripcion"].Value?.ToString();
+            txtPrecio.Text = row.Cells["precio"].Value?.ToString();
+
         }
     }
+}
 
