@@ -41,31 +41,34 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(59, 26);
+            txtNombre.Location = new Point(59, 35);
             txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
+            txtNombre.PlaceholderText = "Nombre del Producto";
             txtNombre.Size = new Size(110, 23);
             txtNombre.TabIndex = 0;
             // 
             // txtDescripcion
             // 
-            txtDescripcion.Location = new Point(59, 67);
+            txtDescripcion.Location = new Point(59, 100);
             txtDescripcion.Margin = new Padding(3, 2, 3, 2);
             txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.PlaceholderText = "Descripción";
             txtDescripcion.Size = new Size(110, 23);
             txtDescripcion.TabIndex = 1;
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(59, 113);
+            txtPrecio.Location = new Point(59, 165);
             txtPrecio.Margin = new Padding(3, 2, 3, 2);
             txtPrecio.Name = "txtPrecio";
+            txtPrecio.PlaceholderText = "Precio";
             txtPrecio.Size = new Size(110, 23);
             txtPrecio.TabIndex = 2;
             // 
             // Crear
             // 
-            Crear.Location = new Point(52, 171);
+            Crear.Location = new Point(45, 218);
             Crear.Margin = new Padding(3, 2, 3, 2);
             Crear.Name = "Crear";
             Crear.Size = new Size(124, 32);
@@ -118,6 +121,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(700, 338);
             Controls.Add(button1);
             Controls.Add(button2);
@@ -129,7 +133,7 @@
             Controls.Add(txtNombre);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
-            Text = "Form";
+            Text = "Configuración de Productos";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
