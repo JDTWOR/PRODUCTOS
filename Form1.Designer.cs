@@ -41,67 +41,47 @@
             // 
             // txtNombre
             // 
-<<<<<<< HEAD
-=======
+
             txtNombre.BackColor = SystemColors.InactiveCaption;
             txtNombre.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             txtNombre.Location = new Point(52, 26);
             txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
             txtNombre.PlaceholderText = "Nombre del Producto";
-<<<<<<< HEAD
-            txtNombre.Size = new Size(97, 23);
-=======
+
             txtNombre.Size = new Size(97, 25);
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             txtNombre.TabIndex = 0;
             // 
             // txtDescripcion
             // 
-<<<<<<< HEAD
-=======
+
             txtDescripcion.BackColor = SystemColors.InactiveCaption;
             txtDescripcion.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             txtDescripcion.Location = new Point(52, 75);
             txtDescripcion.Margin = new Padding(3, 2, 3, 2);
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.PlaceholderText = "Descripción";
-<<<<<<< HEAD
-            txtDescripcion.Size = new Size(97, 23);
-=======
+
             txtDescripcion.Size = new Size(97, 25);
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             txtDescripcion.TabIndex = 1;
             // 
             // txtPrecio
             // 
-<<<<<<< HEAD
-=======
+
             txtPrecio.BackColor = SystemColors.InactiveCaption;
             txtPrecio.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtPrecio.ForeColor = SystemColors.InactiveCaptionText;
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             txtPrecio.Location = new Point(52, 124);
             txtPrecio.Margin = new Padding(3, 2, 3, 2);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.PlaceholderText = "Precio";
-<<<<<<< HEAD
-            txtPrecio.Size = new Size(97, 23);
-=======
+
             txtPrecio.Size = new Size(97, 25);
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             txtPrecio.TabIndex = 2;
             // 
             // Crear
             // 
-<<<<<<< HEAD
-            Crear.Location = new Point(39, 164);
-            Crear.Margin = new Padding(3, 2, 3, 2);
-            Crear.Name = "Crear";
-            Crear.Size = new Size(124, 32);
-=======
+
             Crear.BackColor = SystemColors.ActiveCaption;
             Crear.Font = new Font("Sylfaen", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Crear.ForeColor = SystemColors.ActiveCaptionText;
@@ -109,7 +89,6 @@
             Crear.Margin = new Padding(3, 2, 3, 2);
             Crear.Name = "Crear";
             Crear.Size = new Size(96, 27);
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             Crear.TabIndex = 3;
             Crear.Text = "Crear producto";
             Crear.UseVisualStyleBackColor = false;
@@ -129,10 +108,7 @@
             // 
             // Eliminar
             // 
-<<<<<<< HEAD
-=======
             Eliminar.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             Eliminar.Location = new Point(296, 218);
             Eliminar.Margin = new Padding(3, 2, 3, 2);
             Eliminar.Name = "Eliminar";
@@ -144,10 +120,7 @@
             // 
             // Editar
             // 
-<<<<<<< HEAD
-=======
             Editar.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             Editar.Location = new Point(434, 218);
             Editar.Margin = new Padding(3, 2, 3, 2);
             Editar.Name = "Editar";
@@ -171,11 +144,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-<<<<<<< HEAD
-            BackColor = SystemColors.ControlLightLight;
-=======
             BackColor = SystemColors.Info;
->>>>>>> dcc742a6c0baa3b043744b167fae8babd3230a69
             ClientSize = new Size(612, 254);
             Controls.Add(button1);
             Controls.Add(Editar);
