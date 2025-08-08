@@ -19,33 +19,43 @@ namespace PRODUCTOS
 
         private void Crear_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == "" || txtDescripcion.Text == "" || txtPrecio.Text == "")
+            string nombre = txtNombre.Text.Trim();
+            string descripcion = txtDescripcion.Text.Trim();
+            string pre = txtPrecio.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(nombre) ||
+                string.IsNullOrWhiteSpace(descripcion) ||
+                string.IsNullOrWhiteSpace(pre))
             {
-                MessageBox.Show("Ingrese los datos completos");
+                MessageBox.Show("Ingrese todos los datos");
+                return;
+            }
+
+            if (!double.TryParse(pre, out double precio))
+            {
+                MessageBox.Show("El precio debe ser un número válido");
+                return;
             }
 
             try
             {
-                string nombre = txtNombre.Text;
-                string descripcion = txtDescripcion.Text;
-                string pre = txtPrecio.Text;
-                double precio = Convert.ToDouble(pre);
-
-                conexion = new MySqlConnection(rutaDB);
-                conexion.Open();
-                string query = "INSERT INTO producto (nombre, descripcion, precio) VALUES (@nombre, @descripcion, @precio)";
-                MySqlCommand comando = new MySqlCommand(query, conexion);
-                comando.Parameters.AddWithValue("@nombre", nombre);
-                comando.Parameters.AddWithValue("@descripcion", descripcion);
-                comando.Parameters.AddWithValue("@precio", precio);
-                comando.ExecuteNonQuery();
-                conexion.Close();
-                MessageBox.Show("Producto creado exitosamente");
-
+                using (var conexion = new MySqlConnection(rutaDB))
+                {
+                    conexion.Open();
+                    string query = "INSERT INTO producto (nombre, descripcion, precio) VALUES (@precio, @descripcion, @precio)";
+                    using (var comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@nombre", nombre);
+                        comando.Parameters.AddWithValue("@descripcion", descripcion);
+                        comando.Parameters.AddWithValue("@precio", precio);
+                        comando.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Producto Creado exitosamente");
             }
             catch
             {
-                MessageBox.Show("Error al crear el producto. Verifique los datos ingresados.");
+                MessageBox.Show("Error al crear el producto. Verifique los datos ingresados");
             }
         }
 
