@@ -133,6 +133,7 @@ namespace PRODUCTOS
             txtPrecio.Text = row.Cells["precio"].Value?.ToString();
 
         }
+
     }
 }
 
