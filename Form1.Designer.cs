@@ -126,12 +126,14 @@
             // 
             // button1
             // 
-            button1.Location = new Point(69, 271);
+            button1.BackColor = SystemColors.Info;
+            button1.Location = new Point(52, 475);
             button1.Name = "button1";
             button1.Size = new Size(75, 42);
             button1.TabIndex = 7;
-            button1.Text = "Probar conexión";
-            button1.UseVisualStyleBackColor = true;
+            button1.Text = "...";
+            button1.UseVisualStyleBackColor = false;
+            button1.Visible = false;
             button1.Click += button1_Click;
             // 
             // Form1
@@ -139,7 +141,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
-            ClientSize = new Size(612, 254);
+            ClientSize = new Size(725, 363);
             Controls.Add(button1);
             Controls.Add(Editar);
             Controls.Add(Eliminar);
