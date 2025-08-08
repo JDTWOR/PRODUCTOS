@@ -10,7 +10,7 @@ namespace PRODUCTOS
 
 
     {
-        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=1234";
+        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=;";
         private MySqlConnection conexion;
         string txtId;
         public Form1()
@@ -120,8 +120,7 @@ namespace PRODUCTOS
             comando.Parameters.AddWithValue("@id", txtId);
             comando.ExecuteNonQuery();
             conexion.Close();
-            MessageBox.Show("Producto eliminado con exito: ");
-            MostrarProductos();
+            MessageBox.Show("Este es el id de la fila seleccionado: " + txtId);
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
