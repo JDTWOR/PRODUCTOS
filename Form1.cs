@@ -10,7 +10,7 @@ namespace PRODUCTOS
 
 
     {
-        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=1234";
+        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=";
         private MySqlConnection conexion;
         string txtId;
         public Form1()
@@ -64,7 +64,7 @@ namespace PRODUCTOS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string conexion = "Server=localhost;Database=productos_csharp;User ID=root;Password=1234;";
+            string conexion = "Server=localhost;Database=productos_csharp;User ID=root;Password=";
 
             using (MySqlConnection conn = new MySqlConnection(conexion))
             {
@@ -135,6 +135,22 @@ namespace PRODUCTOS
 
         }
 
+        private void Editar_Click(object sender, EventArgs e)
+        {
+            conexion = new MySqlConnection(rutaDB);
+            conexion.Open();
+            string query = "UPDATE producto SET nombre = @nombre, descripcion = @descripcion, precio = @precio WHERE id = @id";
+
+            MySqlCommand comando = new MySqlCommand(query, conexion);
+            comando.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
+            comando.Parameters.AddWithValue("@descripcion", txtDescripcion.Text.Trim());
+            comando.Parameters.AddWithValue("@precio", double.Parse(txtPrecio.Text.Trim()));
+            comando.Parameters.AddWithValue("@id", txtId);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+            MessageBox.Show("Producto editado con exito: ");
+            MostrarProductos();
+        }
     }
 }
 
