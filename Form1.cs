@@ -1,5 +1,5 @@
 using MySql.Data.MySqlClient;
-
+using System;
 
 namespace PRODUCTOS
 
@@ -14,6 +14,7 @@ namespace PRODUCTOS
         public Form1()
         {
             InitializeComponent();
+            MostrarProductos();
         }
 
         private void Crear_Click(object sender, EventArgs e)
@@ -42,7 +43,7 @@ namespace PRODUCTOS
                 MessageBox.Show("Producto creado exitosamente");
 
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Error al crear el producto. Verifique los datos ingresados.");
             }
@@ -64,6 +65,31 @@ namespace PRODUCTOS
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
+        }
+
+        private void MostrarProductos()
+        {
+            try
+            {
+                conexion = new MySqlConnection(rutaDB);
+                conexion.Open();
+                string query = "SELECT * FROM producto";
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conexion);
+                System.Data.DataTable dt = new System.Data.DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                conexion.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar productos: " + ex.Message);
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
