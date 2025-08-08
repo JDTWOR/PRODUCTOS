@@ -122,6 +122,7 @@
             Editar.TabIndex = 6;
             Editar.Text = "Editar producto";
             Editar.UseVisualStyleBackColor = true;
+            Editar.Click += Editar_Click;
             // 
             // button1
             // 
