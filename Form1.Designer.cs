@@ -41,9 +41,9 @@
             // 
             // txtNombre
             // 
-
             txtNombre.BackColor = SystemColors.InactiveCaption;
             txtNombre.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+
             txtNombre.Location = new Point(52, 26);
             txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
@@ -75,13 +75,11 @@
             txtPrecio.Margin = new Padding(3, 2, 3, 2);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.PlaceholderText = "Precio";
-
             txtPrecio.Size = new Size(97, 25);
             txtPrecio.TabIndex = 2;
             // 
             // Crear
             // 
-
             Crear.BackColor = SystemColors.ActiveCaption;
             Crear.Font = new Font("Sylfaen", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Crear.ForeColor = SystemColors.ActiveCaptionText;
@@ -120,6 +118,7 @@
             // 
             // Editar
             // 
+
             Editar.Font = new Font("Sylfaen", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Editar.Location = new Point(434, 218);
             Editar.Margin = new Padding(3, 2, 3, 2);
@@ -144,7 +143,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+
             BackColor = SystemColors.Info;
+
             ClientSize = new Size(612, 254);
             Controls.Add(button1);
             Controls.Add(Editar);
