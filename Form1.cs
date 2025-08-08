@@ -10,9 +10,7 @@ namespace PRODUCTOS
 
 
     {
-
-        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=";
-
+        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=;";
         private MySqlConnection conexion;
         string txtId;
         public Form1()
@@ -66,7 +64,7 @@ namespace PRODUCTOS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string conexion = "Server=localhost;Database=productos_csharp;User ID=root;Password=";
+            string conexion = "Server=localhost;Database=productos_csharp;User ID=root;Password=1234;";
 
             using (MySqlConnection conn = new MySqlConnection(conexion))
             {
@@ -134,42 +132,6 @@ namespace PRODUCTOS
             txtDescripcion.Text = row.Cells["descripcion"].Value?.ToString();
             txtPrecio.Text = row.Cells["precio"].Value?.ToString();
 
-        }
-
-        private void Editar_Click(object sender, EventArgs e)
-        {
-
-            string nombre = txtNombre.Text.Trim();
-            string descripcion = txtDescripcion.Text.Trim();
-            string pre = txtPrecio.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(nombre) ||
-                string.IsNullOrWhiteSpace(descripcion) ||
-                string.IsNullOrWhiteSpace(pre))
-            {
-                MessageBox.Show("Ingrese todos los datos");
-                return;
-            }
-
-            if (!double.TryParse(pre, out double precio))
-            {
-                MessageBox.Show("El precio debe ser un número válido");
-                return;
-            }
-
-            conexion = new MySqlConnection(rutaDB);
-            conexion.Open();
-            string query = "UPDATE producto SET nombre = @nombre, descripcion = @descripcion, precio = @precio WHERE id = @id";
-
-            MySqlCommand comando = new MySqlCommand(query, conexion);
-            comando.Parameters.AddWithValue("@nombre", nombre);
-            comando.Parameters.AddWithValue("@descripcion", descripcion);
-            comando.Parameters.AddWithValue("@precio", pre);
-            comando.Parameters.AddWithValue("@id", txtId);
-            comando.ExecuteNonQuery();
-            conexion.Close();
-            MessageBox.Show("Producto editado con exito: ");
-            MostrarProductos();
         }
     }
 }
