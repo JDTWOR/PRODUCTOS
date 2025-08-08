@@ -10,9 +10,7 @@ namespace PRODUCTOS
 
 
     {
-
-        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=";
-
+        string rutaDB = "Server=localhost;Database=productos_csharp;User ID=root;Password=1234";
         private MySqlConnection conexion;
         string txtId;
         public Form1()
@@ -115,14 +113,24 @@ namespace PRODUCTOS
 
         private void Eliminar_Click(object sender, EventArgs e)
         {
-            conexion = new MySqlConnection(rutaDB);
-            conexion.Open();
-            string query = "DELETE FROM producto WHERE id=@id";
-            MySqlCommand comando = new MySqlCommand(query, conexion);
-            comando.Parameters.AddWithValue("@id", txtId);
-            comando.ExecuteNonQuery();
-            conexion.Close();
-            MessageBox.Show("Este es el id de la fila seleccionado: " + txtId);
+            try
+            {
+                conexion = new MySqlConnection(rutaDB);
+                conexion.Open();
+                string query = "DELETE FROM producto WHERE id=@id";
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@id", txtId);
+                comando.ExecuteNonQuery();
+                conexion.Close();
+                MessageBox.Show("Producto eliminado con exito");
+                MostrarProductos();
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show("Error al eliminar el producto: " + ex.Message);
+                
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -135,6 +143,57 @@ namespace PRODUCTOS
             txtPrecio.Text = row.Cells["precio"].Value?.ToString();
 
         }
+
+        private void Editar_Click(object sender, EventArgs e)
+        {
+            string nombre = txtNombre.Text.Trim();
+            string descripcion = txtDescripcion.Text.Trim();
+            string pre = txtPrecio.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(txtId))
+            {
+                MessageBox.Show("Seleccione un producto de la lista para editar");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(nombre) ||
+                string.IsNullOrWhiteSpace(descripcion) ||
+                string.IsNullOrWhiteSpace(pre))
+            {
+                MessageBox.Show("Ingrese todos los datos");
+                return;
+            }
+
+            if (!double.TryParse(pre, out double precio) || precio <= 0)
+            {
+                MessageBox.Show("El precio debe ser un número positivo");
+                return;
+            }
+
+            try
+            {
+                using (var conexion = new MySqlConnection(rutaDB))
+                {
+                    conexion.Open();
+                    string query = "UPDATE producto SET nombre=@nombre, descripcion=@descripcion, precio=@precio WHERE id=@id";
+                    using (var comando = new MySqlCommand(query, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@nombre", nombre);
+                        comando.Parameters.AddWithValue("@descripcion", descripcion);
+                        comando.Parameters.AddWithValue("@precio", precio);
+                        comando.Parameters.AddWithValue("@id", txtId);
+                        comando.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Producto actualizado exitosamente");
+                MostrarProductos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el producto: " + ex.Message);
+            }
+        }
+
     }
 }
 
