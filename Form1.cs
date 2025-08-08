@@ -39,11 +39,10 @@ namespace PRODUCTOS
 
             try
             {
-<<<<<<< HEAD
                 using (var conexion = new MySqlConnection(rutaDB))
                 {
                     conexion.Open();
-                    string query = "INSERT INTO producto (nombre, descripcion, precio) VALUES (@precio, @descripcion, @precio)";
+                    string query = "INSERT INTO producto (nombre, descripcion, precio) VALUES (@nombre, @descripcion, @precio)";
                     using (var comando = new MySqlCommand(query, conexion))
                     {
                         comando.Parameters.AddWithValue("@nombre", nombre);
@@ -52,26 +51,8 @@ namespace PRODUCTOS
                         comando.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show("Producto Creado exitosamente");
-=======
-                string nombre = txtNombre.Text;
-                string descripcion = txtDescripcion.Text;
-                string pre = txtPrecio.Text;
-                double precio = Convert.ToDouble(pre);
-
-                conexion = new MySqlConnection(rutaDB);
-                conexion.Open();
-                string query = "INSERT INTO producto (nombre, descripcion, precio) VALUES (@nombre, @descripcion, @precio)";
-                MySqlCommand comando = new MySqlCommand(query, conexion);
-                comando.Parameters.AddWithValue("@nombre", nombre);
-                comando.Parameters.AddWithValue("@descripcion", descripcion);
-                comando.Parameters.AddWithValue("@precio", precio);
-                comando.ExecuteNonQuery();
-                conexion.Close();
                 MessageBox.Show("Producto creado exitosamente");
                 MostrarProductos();
-
->>>>>>> 7d387e8616b57e92163d4d5427805d282cb78f14
             }
             catch
             {
@@ -156,4 +137,5 @@ namespace PRODUCTOS
             }
         }
     }
+}
 
